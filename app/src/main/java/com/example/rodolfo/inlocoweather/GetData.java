@@ -1,7 +1,6 @@
 package com.example.rodolfo.inlocoweather;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -15,10 +14,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by Rodolfo on 11/7/2015.
+ * Updated by Rodolfo on 2/17/2016.
  */
 
 
@@ -34,15 +33,22 @@ public class GetData extends AsyncTask<LatLng, Void, ArrayList<Cidade>> {
             JSONObject json = getJson(url);
             JSONArray list = json.getJSONArray("list");
 
-
+            //JSONObject to ArrayList
             for (int i = 0; i < list.length(); i++) {
+                //Pegando o nome
                 String name = list.getJSONObject(i).get("name") + "";
 
+                //Pegando as temperaturas
                 double tempMax = list.getJSONObject(i).getJSONObject("main").getDouble("temp_max");
                 double tempMin = list.getJSONObject(i).getJSONObject("main").getDouble("temp_min");
 
+                //Pegando a descricao do tempo
                 String description = list.getJSONObject(i).getJSONArray("weather").getJSONObject(0).getString("description");
+
+                //Criando um novo objeto cidade
                 Cidade tempCidade = new Cidade(name,tempMax,tempMin,description);
+
+                //Adicionando o novo objeto cidade ao arraylist
                 cidades.add(tempCidade);
 
             }
@@ -52,10 +58,12 @@ public class GetData extends AsyncTask<LatLng, Void, ArrayList<Cidade>> {
             e.printStackTrace();
 
     }
-
+        //Returnando o arraylist com todas as cidades
         return cidades;
     }
 
+
+    //Url to JSONObject
     public static JSONObject getJson(String url){
 
         InputStream is;

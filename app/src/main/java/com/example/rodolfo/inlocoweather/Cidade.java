@@ -2,6 +2,7 @@ package com.example.rodolfo.inlocoweather;
 
 /**
  * Created by Rodolfo on 2/16/2016.
+ * Classe base para os dados das cidades
  */
 public class Cidade {
     private String nome;

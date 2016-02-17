@@ -4,7 +4,6 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,18 +18,23 @@ import java.util.ArrayList;
  */
 public class List extends ListActivity {
 
+    //Recebendo o arraylist com as cidades
     Singleton singleton = Singleton.getInstance();
     ArrayList<Cidade> cidades = singleton.arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Colocando o meu adapter a lista
         setListAdapter(new MyAdapter());
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+        //Quando um item da lista for clicado
+        //Criando a nova intent que sera colocada e colocando informacoes sobre a cidade nela
         Intent intent = new Intent(List.this,CidadeDetails.class);
         intent.putExtra("name",cidades.get(position).getNome());
         intent.putExtra("tempMax",cidades.get(position).getTempMax());
@@ -39,6 +43,7 @@ public class List extends ListActivity {
         startActivity(intent);
     }
 
+    //Criando o meu adapter que sera usado no ListActivity
     class MyAdapter extends BaseAdapter{
 
         private LayoutInflater inflater;

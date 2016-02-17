@@ -20,14 +20,18 @@ public class CidadeDetails extends Activity {
         super.onStart();
         Intent intent = getIntent();
 
+        //Link das views
+
         TextView nameDetails = (TextView) findViewById(R.id.nameDetails);
         TextView tempMax = (TextView) findViewById(R.id.tempMax);
         TextView tempMin = (TextView) findViewById(R.id.tempMin);
         TextView description = (TextView) findViewById(R.id.description);
 
+        //Colocando os dados nas respectivas views
+
         nameDetails.setText(intent.getCharSequenceExtra("name"));
-        tempMax.setText(intent.getDoubleExtra("tempMax",0) + "");
-        tempMin.setText(intent.getDoubleExtra("tempMin",0) + "") ;
-        description.setText(intent.getCharSequenceExtra("description"));
+        tempMax.setText("Temperatura maxima: " + intent.getDoubleExtra("tempMax",0) + "ºC");
+        tempMin.setText("Temperatura minina: " + intent.getDoubleExtra("tempMin",0) + "ºC") ;
+        description.setText("Descricao do tempo: " + intent.getCharSequenceExtra("description"));
     }
 }

@@ -3,11 +3,8 @@ package com.example.rodolfo.inlocoweather;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -36,6 +33,7 @@ public class MapsActivity extends FragmentActivity {
         setUpMapIfNeeded();
     }
 
+
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
@@ -49,6 +47,7 @@ public class MapsActivity extends FragmentActivity {
         }
     }
 
+    //Setup
     private void setUpMap() {
         mMap.setOnMapLongClickListener(mapLongListener);
         buscarButton.setOnClickListener(buttonListener);
@@ -68,6 +67,8 @@ public class MapsActivity extends FragmentActivity {
         @Override
         public void onClick(View v) {
 
+
+            //Chamando a AssyncTask para receber o JSON
             GetData getData = new GetData();
             getData.execute(markerLatLng);
             ArrayList<Cidade> cidades = new ArrayList<>();
@@ -78,14 +79,15 @@ public class MapsActivity extends FragmentActivity {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+
+            //Colocando o arraylist na minha classe da transmissao de dados
             Singleton singleton = Singleton.getInstance();
             singleton.arrayList = cidades;
 
+            //Chamando a intent para a lista com os nomes das cidades
             Intent intent = new Intent(MapsActivity.this,List.class);
             startActivity(intent);
 
-            //Toast toast = Toast.makeText(getApplicationContext(),cidades.get(0).getNome() + "" , Toast.LENGTH_LONG);
-            //toast.show();
         }
     };
 }

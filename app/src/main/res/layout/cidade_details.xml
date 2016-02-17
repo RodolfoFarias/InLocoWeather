@@ -14,12 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/nameDetails" />
+            android:id="@+id/nameDetails"
+            android:gravity="center"
+            android:text="TEST" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center"
             android:id="@+id/tempMax" />
 
         <TextView
@@ -27,12 +30,14 @@
             android:layout_height="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tempMin"
+            android:gravity="center"
             android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center"
             android:id="@+id/description" />
 
 
