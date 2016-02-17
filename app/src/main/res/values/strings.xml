@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">InLocoWeather</string>
+    <string name="title_activity_maps">InLocoWeather</string>
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+        AIzaSyAVjliFPvwQR4LA9IH7l4YtaQqjJVdh8Sk
+    </string>
+</resources>
